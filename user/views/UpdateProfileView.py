@@ -21,6 +21,8 @@ def updateProfile(request):
             acc_form.save()
             messages.success(request, 'User Profile has been Updated!')
             return redirect('profile')
+        else:
+            messages.error(request, 'User Profile Update Unsuccessful, Please Try Again!')
     else:
         user_form = UpdateUserForm(instance=request.user)
         acc_form = UpdateAccountForm()

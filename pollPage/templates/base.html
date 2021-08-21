@@ -46,11 +46,34 @@
         <main role="main" class="container">
             <div class="row mt-4">
                 <div class="col-md-8">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.tags == 'error' %}
+                                <div class="alert alert-danger">    
+                            {% else %}
+                                <div class="alert alert-{{ message.tags }}">    
+                            {% endif %}
+                                {{ message }}
+                                </div>
+                        {% endfor %}
+                    {% endif %}
                     {% block content %}{% endblock %}
+                </div>
+
+                <div class="col-md-4">
+                    <div class="content-section">
+                        <h3>Event Polling</h3>
+                        <p class='text-muted'>Add a poll here
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-light" style="text-align: center">
+                                    <a href="{% url 'poll-create' %}">Create a Poll</a>
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
             </div>
         </main>
-
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
