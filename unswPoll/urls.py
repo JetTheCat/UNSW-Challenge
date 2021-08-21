@@ -23,3 +23,9 @@ urlpatterns = [
     path('auth/', include('user.urls')),
     path('admin/', admin.site.urls),
 ]
+
+
+# Useful Link:
+# https://stackoverflow.com/questions/36280056/page-not-found-404-django-media-files
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
