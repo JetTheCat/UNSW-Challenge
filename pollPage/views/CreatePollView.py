@@ -26,7 +26,7 @@ def createPoll(request):
             content = form.cleaned_data.get('content')
             participants = list(form.cleaned_data.get('participant'))
 
-            time_list = (x + ":00" for x in form.cleaned_data.get('time_slot'))
+            time_list = (x for x in form.cleaned_data.get('time_slot'))
             time_list = list(time_list)
 
             # Check if owner/creator of the poll is in the list of participant model instances, 

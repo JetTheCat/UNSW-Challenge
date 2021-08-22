@@ -18,7 +18,9 @@
                         {% if poll.user_id == user.id %}
                             <div class="col-md-4 d-flex flex-row-reverse">
                                 <a class="mb-1 ml-1 btn btn-sm btn-outline-danger" href="{% url 'poll-delete' poll.id %}">Delete</a>
-                                <a class="mb-1 btn btn-sm btn-outline-info" href="{% url 'poll-close' poll.id %}">Close</a>
+                                {% if poll.active == True %}
+                                    <a class="mb-1 btn btn-sm btn-outline-info" href="{% url 'poll-close' poll.id %}">Close</a>
+                                {% endif %}
                             </div>
                         {% endif %}
                     </div>

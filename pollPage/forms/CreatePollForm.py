@@ -7,15 +7,15 @@ from pollPage.models import Polls
 
 class CreatePollForm(forms.ModelForm):
     TIME_CHOICES =(
-        ("9", "9:00 a.m."),
-        ("10", "10:00 a.m."),
-        ("11", "11:00 a.m."),
-        ("12", "12:00 p.m."),
-        ("13", "1:00 p.m."),
-        ("14", "2:00 p.m."),
-        ("15", "3:00 p.m."),
-        ("16", "4:00 p.m."),
-        ("17", "5:00 p.m."),
+        ("9:00 a.m.", "9:00 a.m."),
+        ("10:00 a.m.", "10:00 a.m."),
+        ("11:00 a.m.", "11:00 a.m."),
+        ("12:00 p.m.", "12:00 p.m."),
+        ("1:00 p.m.", "1:00 p.m."),
+        ("2:00 p.m.", "2:00 p.m."),
+        ("3:00 p.m.", "3:00 p.m."),
+        ("4:00 p.m.", "4:00 p.m."),
+        ("5:00 p.m.", "5:00 p.m."),
     )
     time_slot = forms.MultipleChoiceField(label="Select Time Slots", choices=TIME_CHOICES, widget=forms.CheckboxSelectMultiple) 
     participant = forms.ModelMultipleChoiceField(label="Invite Participants", queryset=User.objects.all(), 
