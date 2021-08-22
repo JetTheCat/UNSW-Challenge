@@ -31,7 +31,7 @@ class PollListView(ListView):
             invited_polls = (x['poll'] for x in invited_polls)
             invited_polls = list(invited_polls)
 
-            polls = Polls.objects.filter(id__in=invited_polls).values()
+            polls = Polls.objects.filter(id__in=invited_polls).values().order_by('-active', '-timestamp_created')
 
             for poll in polls:
                 # Get owner/creator of the poll
