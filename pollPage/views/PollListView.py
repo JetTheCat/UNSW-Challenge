@@ -1,8 +1,9 @@
+from pollPage.models.PollOptions import PollOptions
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import Max
 from django.views.generic import (
     ListView, 
     CreateView,
@@ -11,36 +12,40 @@ from django.views.generic import (
 )
 
 # Model imports
+from pollPage.models import Polls
+from pollPage.models import PollUsers
+from pollPage.models import PollOptions
+from django.contrib.auth.models import User
 
 class PollListView(ListView):
-    model = None 
-    
-    # How django looks up template for class based views
-    # <app> / <model>_<viewtype>.html
-    # In this case the django by default would search for
-    # post_list.html where <model> = post and <viewtype> = list
-    # template_name allows us to override the default search and
-    # specify a specific template to use for a class based view
-    template_name = 'pollPage/base.html'
-    #context_object_name = 'polls'
+    model = Polls  
+    template_name = 'pollList.html'
+    context_object_name = 'polls'
 
 
-    '''
-    # Override default query function to filter query set based on user age/priviledge
-    # Admin users will have privilege to view all types of books regardless of their age
-    # We also order our query set, - (minus sign) means newest to oldest
+    # Override default query function to filter query set based on the polls that the 
+    # user is invited to participate in
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            if self.request.user.userinfo.isAdmin == 0:
-                if self.request.user.userinfo.age >= 18:
-                    return Post.objects.filter(isRestricted=1).order_by('-datePosted')
-                else:
-                    return Post.objects.filter(isRestricted=0).order_by('-datePosted')
-            else:
-                return Post.objects.all().order_by('-datePosted')
+            invited_polls = PollUsers.objects.filter(participant=self.request.user.id).values('poll')
+            invited_polls = (x['poll'] for x in invited_polls)
+            invited_polls = list(invited_polls)
+
+            polls = Polls.objects.filter(id__in=invited_polls).values()
+
+            for poll in polls:
+                # Get owner/creator of the poll
+                owner = User.objects.get(id=poll['user_id'])
+
+                # Get current session user's poll data
+                poll_user = PollUsers.objects.get(participant=self.request.user.id, poll=poll['id'])
+
+                poll['owner'] = owner.username
+                poll['voted'] = poll_user.voted
+                poll['voted_choice'] = poll_user.voted_choice
+                poll['options'] = PollOptions.objects.filter(poll=poll['id'])
+
+            return polls
         else:
             return None
-   '''
 
-def home(request):
-    return render(request, 'base.html')

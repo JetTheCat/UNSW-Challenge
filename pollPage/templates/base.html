@@ -60,18 +60,20 @@
                     {% block content %}{% endblock %}
                 </div>
 
-                <div class="col-md-4">
-                    <div class="content-section">
-                        <h3>Event Polling</h3>
-                        <p class='text-muted'>Add a poll here
-                            <ul class="list-group">
-                                <li class="list-group-item list-group-item-light" style="text-align: center">
-                                    <a href="{% url 'poll-create' %}">Create a Poll</a>
-                                </li>
-                            </ul>
-                        </p>
+                {% if user.is_authenticated == True %}
+                    <div class="col-md-4">
+                        <div class="content-section">
+                            <h3>Event Polling</h3>
+                            <p class='text-muted'>Add a poll here
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-light" style="text-align: center">
+                                        <a href="{% url 'poll-create' %}">Create a Poll</a>
+                                    </li>
+                                </ul>
+                            </p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </main>
 

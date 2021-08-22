@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if user.is_authenticated == True %}
+        {% for poll in polls %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata row">
+                        <div class="col-md-8">
+                            <small class="mr-2" href="#">Created by: {{ poll.owner }}</small>
+                            <small class="text-muted">{{ poll.timestamp_created|date:"F d, Y" }}</small>
+                            {% if poll.active == True %}
+                                <span class="badge badge-success ml-3">Active</span>
+                            {% elif poll.active == False %}
+                                <span class="badge badge-warning ml-3">Closed</span>
+                            {% endif %}
+                        </div>
+
+                        {% if poll.user_id == user.id %}
+                            <div class="col-md-4 d-flex flex-row-reverse">
+                                <a class="mb-1 ml-1 btn btn-sm btn-outline-danger" href="{% url 'poll-delete' poll.id %}">Delete</a>
+                                <a class="mb-1 btn btn-sm btn-outline-info" href="{% url 'poll-close' poll.id %}">Close</a>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <h2>{{ poll.title }}</h2>
+
+                    <div class="d-flex justify-content-start mt-3">
+                        {% if poll.voted == False and poll.active == True %}
+                            <ul class="list-group w-25">
+                            {% for option in poll.options %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ option.time_str }}
+                                    <a type="button" class="btn btn-outline-dark btn-sm" href="{% url 'vote-poll' user_id=user.id option_id=option.id poll_id=poll.id%}">Vote</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+
+                        {% elif poll.voted == True or poll.active == False %}
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Vote Count:</th>
+                                </thead>
+                                <tbody>
+                                    {% for option in poll.options %}
+                                        <tr>
+                                            <th scope="row">{{ option.time_str }}</th>
+                                            <td>{{ option.vote_count }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+                        <p class="article-content pl-5 w-75">{{ poll.content }}</p>
+                    </div>
+
+                    <ul class="list-group">
+                        {% if poll.voted == True or poll.active == False %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                You have voted for {{ poll.voted_choice }}
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Oh no!</h4>
+            <p>
+                It seems that you're not logged in, Please log in to see all of our available books!
+            </p>
+            <hr>
+            <p class="mb-0">You can register to create an account with us if you don't have one yet!</p>
+        </div>
+    {% endif %}
+{% endblock content%}

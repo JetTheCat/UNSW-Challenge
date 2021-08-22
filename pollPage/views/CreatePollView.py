@@ -48,11 +48,10 @@ def createPoll(request):
             for time in time_list:
                 currPollOption = PollOptions(poll=poll, time_str=time)
                 currPollOption.save()
-                for user in participants:
-                    currPollUser = PollUsers(pollOption=currPollOption, participant=user)
-                    currPollUser.save()
-            
 
+            for user in participants:
+                currPollUser = PollUsers(poll=poll, participant=user)
+                currPollUser.save()
 
             messages.success(request, 'Poll Creation Successful!')
             return redirect('poll-home')
