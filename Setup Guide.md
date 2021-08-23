@@ -9,6 +9,8 @@ pip install Django
 If you have Python and Django installed in your system or virtual environment already and using the **pip** command to install packages, you can skip using the the **Installation (Anaconda Environment)** step below and run the following **pip** commands to install the packages/dependencies in your local environment/virtual environment to run the program.
 ```
 pip install Pillow
+```
+```
 pip install django-crispy-forms
 ```
 Once the packages have been installed, skip past the **Installation (Anaconda Environment)** guide and move onto the **Running the application** step to run the django application.
@@ -35,6 +37,8 @@ Running this command will not only install django but also all other packages ne
 We also need to run the two commands below to install two other packages for our web application form to work with bootstrap and image files.
 ```
 conda install -c anaconda pillow
+```
+```
 conda install -c conda-forge django-crispy-forms
 ```
 
