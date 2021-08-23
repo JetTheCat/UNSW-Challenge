@@ -1,13 +1,19 @@
 # First Time Setup Guide
 This document provides a set of instructions to install and setup necessary packages to run the Python and Django web application.
 
-## Side Note
-If you have Python and Django installed in your system already and using the **pip** command to install packages, you can skip the **Installation** step and run the following **pip** commands to install the packages/dependencies in your local environment/virtual environment to run the program.
+## Side Note - Pip Installation 
+If you do not have Django in your system yet, you can install it using the command below in your terminal if you have the **pip** package installer in your system.
 ```
-Test
+pip install Django
 ```
+If you have Python and Django installed in your system or virtual environment already and using the **pip** command to install packages, you can skip the **Installation** step below and run the following **pip** commands to install the packages/dependencies in your local environment/virtual environment to run the program.
+```
+pip install Pillow
+pip install django-crispy-forms
+```
+Once the packages have been installed, skip until the **Running the application** step to run the django application.
 
-## Installation 
+## Installation (Anaconda Environment)
 The development for this project was done in the Anaconda environment. To install anaconda please follow the link https://conda.io/projects/conda/en/latest/user-guide/install/download.html and follow the setup instructions depending on your OS system. 
 
 Once you have installed anaconda, we will need to open the Anaconda Prompt through the start menu. The first step is to set up a virtual environment and then install the necessary packages to run the program. 
