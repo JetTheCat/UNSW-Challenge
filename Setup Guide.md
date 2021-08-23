@@ -2,7 +2,7 @@
 This document provides a set of instructions to install and setup necessary packages to run the Python and Django web application.
 
 ## Side Note - Pip Installation 
-If you do not have Django in your system yet, you can install it using the command below in your terminal if you have the **pip** package installer in your system.
+If you do not have Django in your system or virtual environment yet, you can install it using the command below in your terminal if you have the **pip** package installer in your system.
 ```
 pip install Django
 ```
