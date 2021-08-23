@@ -1,4 +1,28 @@
 # First Time Setup Guide
 This document provides a set of instructions to install and setup necessary packages to run the Python and Django web application.
 
-## Conda Installation and Setup
+## Installation 
+The development for this project was done in the Anaconda environment. To install anaconda please follow the link https://conda.io/projects/conda/en/latest/user-guide/install/download.html and follow the setup instructions depending on your OS system. 
+
+Once you have installed anaconda, we will need to open the Anaconda Prompt through the start menu. The first step is to set up a virtual environment and then install the necessary packages to run the program. 
+
+To create a virtual environment, run the following code in the Anaconda Prompt. Note djangoPoll is just the name we assigned for the created environment, you can replace it with any name you prefer.
+```
+conda create --name djangoPoll
+```
+After creating the environment, we activate it by running the following line
+```
+activate djangoPoll
+```
+Upon activating the environment, we need to install some packages starting with django
+```
+conda install -c anaconda django
+```
+Running this command will not only install django but also all other packages needed to work with django including our SQLite database that we are using in this project.
+
+We also need to run the two commands below to install two other packages for our web application form to work with bootstrap and image files.
+```
+conda install -c anaconda pillow
+conda install -c conda-forge django-crispy-forms
+```
+
