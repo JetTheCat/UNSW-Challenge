@@ -13,6 +13,10 @@ pip install Pillow
 ```
 pip install django-crispy-forms
 ```
+Additionally, there is a **requirements.txt** file provided in this repository already. You can execute the command below to skip the steps above
+```
+pip install -r requirements.txt
+```
 Once the packages have been installed, skip past the **Installation (Anaconda Environment)** guide and move onto the **Running the application** step to run the django application.
 
 ## Installation (Anaconda Environment)
