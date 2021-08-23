@@ -2,7 +2,7 @@
 This document provides a set of instructions to install and setup necessary packages to run the Python and Django web application.
 
 ## Side Note
-If you have Python and Django installed in your system already and using the **pip** command to install packages, you can skip the **Installation** step and run the following **pip** command to install the packages/dependencies needed to run the program.
+If you have Python and Django installed in your system already and using the **pip** command to install packages, you can skip the **Installation** step and run the following **pip** commands to install the packages/dependencies needed to run the program.
 ```
 Test
 ```
