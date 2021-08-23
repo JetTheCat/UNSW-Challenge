@@ -44,3 +44,17 @@ Once we have all the necessary packages installed, make a git pull request for t
 python manage.py runserver
 ```
 
+## Test Accounts
+These are some active accounts created for testing purposes
+```
+Username: Jet
+Password: polltest123
+```
+```
+Username: Sam
+Password: polltest123
+```
+```
+Username: James
+Password: polltest123
+```
