@@ -1,8 +1,11 @@
 # First Time Setup Guide
 This document provides a set of instructions to install and setup necessary packages to run the Python and Django web application.
 
-### Side Note
-If you have Python and Django installed in your system already and using the **pip** command to install packages, you can skip the **Installation** step and run the following **pip** command.
+## Side Note
+If you have Python and Django installed in your system already and using the **pip** command to install packages, you can skip the **Installation** step and run the following **pip** command to install the packages/dependencies needed to run the program.
+```
+Test
+```
 
 ## Installation 
 The development for this project was done in the Anaconda environment. To install anaconda please follow the link https://conda.io/projects/conda/en/latest/user-guide/install/download.html and follow the setup instructions depending on your OS system. 
