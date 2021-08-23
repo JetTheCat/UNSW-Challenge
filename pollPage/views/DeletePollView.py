@@ -22,7 +22,7 @@ class DeletePollView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return reverse('poll-home')
 
     
-    # Only allow admin users to access create view page
+    # Only allow authenticated users 
     def test_func(self):
         if self.request.user.is_authenticated:
             return True 
