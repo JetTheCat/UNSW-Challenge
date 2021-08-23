@@ -6,12 +6,12 @@ If you do not have Django in your system yet, you can install it using the comma
 ```
 pip install Django
 ```
-If you have Python and Django installed in your system or virtual environment already and using the **pip** command to install packages, you can skip the **Installation** step below and run the following **pip** commands to install the packages/dependencies in your local environment/virtual environment to run the program.
+If you have Python and Django installed in your system or virtual environment already and using the **pip** command to install packages, you can skip using the the **Installation (Anaconda Environment)** step below and run the following **pip** commands to install the packages/dependencies in your local environment/virtual environment to run the program.
 ```
 pip install Pillow
 pip install django-crispy-forms
 ```
-Once the packages have been installed, skip until the **Running the application** step to run the django application.
+Once the packages have been installed, skip past the **Installation (Anaconda Environment)** guide and move onto the **Running the application** step to run the django application.
 
 ## Installation (Anaconda Environment)
 The development for this project was done in the Anaconda environment. To install anaconda please follow the link https://conda.io/projects/conda/en/latest/user-guide/install/download.html and follow the setup instructions depending on your OS system. 
@@ -39,7 +39,7 @@ conda install -c conda-forge django-crispy-forms
 ```
 
 ## Running the application
-Once we have all the necessary packages installed, make a git pull request for this repository and navigate inside the **UNSW-Challenge** directory where you can find the **manage.py** file in the Anaconda Prompt/Terminal. And finally to run the application, run the following command:
+Once we have all the necessary packages installed, make a git pull request for this repository and navigate inside the **UNSW-Challenge** directory where you can find the **manage.py** file in the Anaconda Prompt or your system's terminal. And finally to run the application, run the following command:
 ```
 python manage.py runserver
 ```
