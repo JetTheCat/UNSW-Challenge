@@ -26,3 +26,9 @@ conda install -c anaconda pillow
 conda install -c conda-forge django-crispy-forms
 ```
 
+## Running the application
+Once we have all the necessary packages installed, make a git pull request for this repository and navigate inside the **UNSW-Challenge** directory where you can find the **manage.py** file in the Anaconda Prompt/Terminal. And finally to run the application, run the following command:
+```
+python manage.py runserver
+```
+
